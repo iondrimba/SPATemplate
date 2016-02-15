@@ -20,7 +20,7 @@ __TODO:__
 
 __Features:__
  * Router system with pushstate (page.js)
- * Templating engine with (handlebars.js)
+ * Templating engine (handlebars.js)
  * Module system CommonJs (browserify)
 
 > In order to test if Pushstate is working
@@ -58,18 +58,21 @@ __Structure:__
 │    ├─── images/
 │    ├─── .htaccess
 │    └─── index.html
+│── spec/(jasmine tests)
 │── src/
 │    ├── scripts/
 │    └── scss/
 │    └── templates/
 │── tasks/
+│── test/(coverage report)
 │
 │── .gitignore
 │── .travis.yml
+│── karma.conf.js
 │── gulpfile.js
 │── lint.yml
 │── package.json
-└── README.mdeslint
+└── README.md
 ````
 
 [scss-lint]:<https://github.com/brigade/scss-lint#installation>

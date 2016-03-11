@@ -3,7 +3,6 @@ var AboutModel = require('../src/scripts/models/about-model');
 var ContactModel = require('../src/scripts/models/contact-model');
 var NotFoundModel = require('../src/scripts/models/notfound-model');
 
-
 describe('src/scripts/core - Controller Tests', function() {
 
     it('App should be defined ', function() {
@@ -11,25 +10,25 @@ describe('src/scripts/core - Controller Tests', function() {
     });
 
     it('should navigate to home page', function() {
-        app.controller.navigate('/');
         var model = new HomeModel();
+        app.controller.navigate('/');
         expect(app.controller.current.model.title).toEqual(model.title);
     });
 
     it('should navigate to about page', function() {
-        app.controller.navigate('/about');
         var model = new AboutModel();
+        app.controller.navigate('/about');
         expect(app.controller.current.model.title).toEqual(model.title);
     });
 
     it('should navigate to contact page', function() {
-        app.controller.navigate('/contact');
         var model = new ContactModel();
+        app.controller.navigate('/contact');
         expect(app.controller.current.model.title).toEqual(model.title);
     });
     it('should navigate to not found page', function() {
-        app.controller.navigate('/---');
         var model = new NotFoundModel();
+        app.controller.navigate('/---');
         expect(app.controller.current.model.title).toEqual(model.title);
     });
     it('should throw exeption', function() {
@@ -50,9 +49,47 @@ describe('src/scripts/core - Controller Tests', function() {
         expect(contentChildren).toEqual(1);
     });
 
-    it('should have called animateInComplete after navigate ', function(done) {
+    it('should have called click on Home', function() {
+        app.controller.navigate('/');
+        spyOn(app.controller.current, 'click');
+        app.controller.current.click();
+        expect(app.controller.current.click).toHaveBeenCalled();
+    });
+
+    it('should have called animateInComplete after navigate to Contact ', function(done) {
         spyOn(app.controller, 'animateInComplete');
         app.controller.navigate('/contact');
+        var timeout = setTimeout(function() {
+            expect(app.controller.animateInComplete).toHaveBeenCalled();
+            clearTimeout(timeout);
+            done();
+        }, 1000);
+    });
+
+    it('should have called animateInComplete after navigate to Home', function(done) {
+        spyOn(app.controller, 'animateInComplete');
+        app.controller.navigate('/');
+        var timeout = setTimeout(function() {
+            expect(app.controller.animateInComplete).toHaveBeenCalled();
+            clearTimeout(timeout);
+            done();
+        }, 1000);
+    });
+
+
+    it('should have called animateInComplete after navigate to About', function(done) {
+        spyOn(app.controller, 'animateInComplete');
+        app.controller.navigate('/about');
+        var timeout = setTimeout(function() {
+            expect(app.controller.animateInComplete).toHaveBeenCalled();
+            clearTimeout(timeout);
+            done();
+        }, 1000);
+    });
+
+    it('should have called animateInComplete after navigate to NotFound', function(done) {
+        spyOn(app.controller, 'animateInComplete');
+        app.controller.navigate('/---');
         var timeout = setTimeout(function() {
             expect(app.controller.animateInComplete).toHaveBeenCalled();
             clearTimeout(timeout);

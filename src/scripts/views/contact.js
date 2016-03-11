@@ -16,8 +16,8 @@ var Contact = function Contact(app) {
     this.animateIn = function(complete) {
         app.controller.content.addClass('content-show');
         var timeout = setTimeout(function() {
-            complete();
             clearTimeout(timeout);
+            complete();
         }, 500);
     };
 };

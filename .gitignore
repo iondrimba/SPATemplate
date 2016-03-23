@@ -1,7 +1,7 @@
 .DS_Store
 node_modules/
+public/js/*.js
+public/css/*.css
 public/index.html
-public/js/app.*.js
-public/css/app.*.css
 test/
 npm-debug.log

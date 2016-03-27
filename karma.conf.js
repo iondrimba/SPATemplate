@@ -1,5 +1,8 @@
 // Karma configuration
 // Generated on Tue Feb 02 2016 21:20:59 GMT-0200 (Horário brasileiro de verão)
+var istanbul = require('browserify-istanbul');
+var threshold = require('karma-threshold-reporter');
+
 module.exports = function(config) {
     config.set({
 
@@ -18,7 +21,9 @@ module.exports = function(config) {
         included: false,
         browserify: {
             debug: true,
-            transform: ['stringify'],
+            transform: ['stringify', istanbul({
+                defaultIgnore: true
+            })],
             extensions: ['.js'],
             bundleDelay: 1000
         },
@@ -27,7 +32,7 @@ module.exports = function(config) {
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
             'src/scripts/app.js': ['browserify'],
-            'spec/*.js': ['browserify', 'coverage']
+            'spec/*.js': ['browserify']
         },
         coverageReporter: {
             // specify a common output directory 
@@ -40,12 +45,18 @@ module.exports = function(config) {
                 }
             ]
         },
+
         // test results reporter to use
         // possible values: 'dots', 'progress'
         // available reporters: https://npmjs.org/browse/keyword/karma-reporter
         reporters: ['spec', 'coverage'],
 
-
+        thresholdReporter: {
+            statements: 90,
+            branches: 60,
+            functions: 85,
+            lines: 90
+        },
         // web server port
         port: 9876,
 

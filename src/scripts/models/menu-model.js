@@ -11,7 +11,7 @@ var MenuModel = function MenuModel() {
     }, {
         label: 'Not Found',
         href: '/---'
-    }, ];
+    }];
 };
 
 

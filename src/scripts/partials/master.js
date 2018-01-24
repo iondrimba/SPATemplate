@@ -5,7 +5,6 @@ var Menu = require('./menu');
 var Footer = require('./footer');
 
 var Master = function Master(app) {
-    var view = template;
     this.setup = function() {
         this.header = new Header(app);
         this.menu = new Menu(app);

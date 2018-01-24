@@ -4,6 +4,7 @@ var browserSync = require('browser-sync')
 
 module.exports = function () {
 	browserSync.init({
+		port:9090,
 		server: "./public",
 		//proxy: "spa:3000"
 	});

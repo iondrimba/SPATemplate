@@ -9,6 +9,6 @@ function App() {
 	this.handlebars = handlebars;
 	this.controller = new Controller(this);
 	this.controller.start();
-};
+}
 
 window.app = new App();

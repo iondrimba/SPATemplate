@@ -16,7 +16,7 @@ var Controller = function Controller(app) {
         app.router.exit('*', this.exit.bind(this));
         app.router();
     };
-    this.masterPage = function(ctx, next) {
+    this.masterPage = function() {
         this.master = new Master(app);
         this.master.setup();
         app.$('body').html(this.master.view());
@@ -62,16 +62,16 @@ var Controller = function Controller(app) {
     this.prerender = function(ctx, next) {
         next();
     };
-    this.home = function(ctx, next) {
+    this.home = function() {
         this.createView(Home);
     };
-    this.contact = function(ctx, next) {
+    this.contact = function() {
         this.createView(Contact);
     };
-    this.about = function(ctx, next) {
+    this.about = function() {
         this.createView(About);
     };
-    this.notFound = function(ctx, next) {
+    this.notFound = function() {
         this.createView(NotFound);
     };
 };
